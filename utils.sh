@@ -7,7 +7,7 @@ MODULE_SCRIPTS_DIR="scripts"
 TEMP_DIR="temp"
 BUILD_DIR="build"
 
-GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-$"j-hc/revanced-magisk-module"}
+GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-$"NoName-exe/revanced"}
 NEXT_VER_CODE=${NEXT_VER_CODE:-$(date +'%Y%m%d')}
 WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
@@ -251,12 +251,12 @@ build_rv() {
 		if [ "${args[module_prop_name]:-}" ]; then
 			pn=${args[module_prop_name]}
 		else
-			pn=$([ "${arch}" = "all" ] && echo "${app_name_l}-rv-jhc-magisk" || echo "${app_name_l}-${arch}-rv-jhc-magisk")
+			pn=$([ "${arch}" = "all" ] && echo "${app_name_l}-rv-NoNameEXE-magisk" || echo "${app_name_l}-${arch}-rv-NoNameEXE-magisk")
 		fi
 		module_prop "$pn" \
 			"${args[app_name]} ReVanced" \
 			"$version" \
-			"${args[app_name]} ReVanced Magisk module" \
+			"${args[app_name]} ReVanced Magisk Module" \
 			"https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/update/${upj}" \
 			"$base_template"
 
@@ -291,7 +291,7 @@ build_youtube() {
 #shellcheck disable=SC2034
 build_music() {
 	declare -A ytmusic_args
-	ytmusic_args[app_name]="Music"
+	ytmusic_args[app_name]="YouTube-Music"
 	ytmusic_args[patcher_args]="$(join_args "${MUSIC_EXCLUDED_PATCHES}" -e) $(join_args "${MUSIC_INCLUDED_PATCHES}" -i)"
 	ytmusic_args[microg_patch]="music-microg-support"
 	ytmusic_args[pkg_name]="com.google.android.apps.youtube.music"
@@ -386,7 +386,7 @@ module_prop() {
 name=${2}
 version=v${3}
 versionCode=${NEXT_VER_CODE}
-author=j-hc
+author=NoName-exe
 description=${4}" >"${6}/module.prop"
 
 	[ "$ENABLE_MAGISK_UPDATE" = true ] && echo "updateJson=${5}" >>"${6}/module.prop"
